@@ -42,7 +42,8 @@ def encode_favicon() -> str:
         return base64.b64encode(content.read()).decode('ascii')
 
 
-def render_pages(menu_items: List[Tuple[str, str, int]]):
+def render_pages():
+    menu_items: List[Tuple[str, str, int]] = get_menu_items()
     page_tmpl: Template = Template(template_path.open().read())
     favicon: str = encode_favicon()
     file: PosixPath
@@ -74,7 +75,6 @@ def compile_css():
 
 
 if __name__ == '__main__':
-    menu: List[Tuple[str, str, int]] = get_menu_items()
     clean_build_dir()
-    render_pages(menu)
+    render_pages()
     compile_css()
