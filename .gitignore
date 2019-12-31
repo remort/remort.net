@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Pycharm IDE
+.idea
+
+# Static build directory
+build/

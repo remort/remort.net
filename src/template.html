@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{meta.title | first}}</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="{{meta.description}}">
+    <link rel="shortcut icon" href="">
+    <link rel="icon" type="image/x-icon" href="">
+    <link rel="stylesheet" href="style.css" />
+    <link id="favicon" rel="shortcut icon" type="image/png" href="data:image/png;base64,{{favicon}}">
+</head>
+
+<body>
+    <div id="wrap">
+        <div id="header" class="post">
+            <h1>Remort's spot</h1>
+            <ul>
+                {% for name, title, order in menu_items %}
+                    <li {% if title == meta.title | first %}class="active"{% endif %}>
+                        <a href="{{name}}">{{title}}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <main class="post">
+            {{ page_content }}
+        </main>
+
+        <div id="footer">
+            <span class="left">Content &#127279; Remort. No rights reserved.</span>
+            <span class="right">Собрано <a href="https://github.com/remort/remort.net">так.</a></span>
+        </div>
+    </div>
+</body>
+</html>
