@@ -10,4 +10,4 @@ services:
         env: ${ENV}
     restart: unless-stopped
     ports:
-      - ${NGINX_PUBLIC_PORT}:80
+      - 80:80

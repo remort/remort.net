@@ -10,25 +10,29 @@ production_env_file = environment/production.env
 	check-env
 
 run: check-env
-	@docker-compose build --no-cache --force-rm
-	@docker-compose up -d
+	@docker-compose build --no-cache --force-rm nginx
+	@if [ "$(shell readlink .env)" = "$(production_env_file)" ]; then\
+		docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d;\
+	else\
+		docker-compose up -d;\
+	fi
 
 build:
 	python3 build.py
 	@echo "Succesfully built"
 
 env: check-envs
-	@if [ "$(environment)" = "development" -o "$(environment)" = "production" ] ; then\
+	@if [ "$(environment)" = "development" -o "$(environment)" = "production" ]; then\
 		cat environment/$(environment).env > .env;\
 		echo "Environment set up as $(environment)";\
 		exit 0;\
-	else \
+	else\
 		echo "Usage: make env environment=[development|staging|production]";\
 		exit 1;\
 	fi
 
 check-envs:
-	@if [ ! -f $(production_env_file) ] || [ ! -f $(development_env_file) ] ; then\
+	@if [ ! -f $(production_env_file) ] || [ ! -f $(development_env_file) ]; then\
 		echo "One or more environment files are absent. Chech 'environment/' directory.";\
 		exit 1;\
 	fi

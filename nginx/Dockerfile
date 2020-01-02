@@ -10,8 +10,9 @@ RUN apk add --update bash && rm -rf /var/cache/apk/* && \
     ln -sf /dev/stdout /var/log/nginx/access.log && \
     ln -sf /dev/stderr /var/log/nginx/error.log
 
-COPY nginx/${env}.conf /etc/nginx/nginx.conf
+COPY nginx/nginx.conf /etc/nginx/nginx.conf
+COPY nginx/${env}.conf /etc/nginx/server.conf
 COPY nginx/ssl-dhparams.pem /etc/nginx/conf.d/ssl-dhparams.pem
 COPY build/ /var/www/webroot/
 
-RUN sed -i -r "s/DOMAIN_PLACEHOLDER/${server_name}/g" /etc/nginx/nginx.conf
+RUN sed -i -r "s/DOMAIN_PLACEHOLDER/${server_name}/g" /etc/nginx/server.conf

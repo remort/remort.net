@@ -5,7 +5,7 @@ services:
     volumes:
       - certbot_www:/var/www/certbot
       - certbot_conf:/etc/letsencrypt
-      - ./nginx/certonly.conf:/etc/nginx/nginx.conf
+      - ./nginx/certonly.conf:/etc/nginx/server.conf
 
   certbot:
     image: certbot/certbot
