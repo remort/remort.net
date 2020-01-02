@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: nginx/Dockerfile
+      args:
+        server_name: ${SERVER_NAME}
+        env: ${ENV}
+    restart: unless-stopped
+    ports:
+      - ${NGINX_PUBLIC_PORT}:80
