@@ -14,7 +14,7 @@ run: check-env
 	@docker-compose up -d
 
 build:
-	python build.py
+	python3 build.py
 	@echo "Succesfully built"
 
 env: check-envs

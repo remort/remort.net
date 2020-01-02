@@ -1,0 +1,31 @@
+version: "3"
+
+services:
+  nginx:
+    volumes:
+      - certbot_www:/var/www/certbot
+      - certbot_conf:/etc/letsencrypt
+      - ./nginx/certonly.conf:/etc/nginx/nginx.conf
+
+  certbot:
+    image: certbot/certbot
+    restart: unless-stopped
+    entrypoint: ["certbot"]
+    command:
+      - 'certonly'
+      - '--webroot'
+      - '--register-unsafely-without-email'
+      - '--agree-tos'
+      - '--webroot-path'
+      - '/var/www/certbot'
+      - '--domains'
+      - ${SERVER_NAME}
+    depends_on:
+      - nginx
+    volumes:
+      - certbot_www:/var/www/certbot
+      - certbot_conf:/etc/letsencrypt
+
+volumes:
+  certbot_www: {}
+  certbot_conf: {}
