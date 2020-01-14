@@ -1,4 +1,5 @@
 FROM nginx:stable-alpine
+LABEL Vadim Bazhov <master@remort.net>
 
 ARG server_name
 ARG env

@@ -27,7 +27,7 @@ env: check-envs
 		echo "Environment set up as $(environment)";\
 		exit 0;\
 	else\
-		echo "Usage: make env environment=[development|staging|production]";\
+		echo "Usage: make env environment=[development|production]";\
 		exit 1;\
 	fi
 

@@ -17,6 +17,7 @@ services:
       - certbot_conf:/etc/letsencrypt
     ports:
       - 443:443
+      - 80:80
 
 volumes:
   certbot_www: {}
