@@ -10,4 +10,4 @@ services:
         env: ${ENV}
     restart: unless-stopped
     ports:
-      - 80:80
+      - 6000:80

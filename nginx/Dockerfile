@@ -1,10 +1,10 @@
 FROM nginx:stable-alpine
-LABEL Vadim Bazhov <master@remort.net>
+LABEL maintainer="Вадим Бажов: master@remort.net"
 
 ARG server_name
 ARG env
 
-RUN apk add --update bash && rm -rf /var/cache/apk/* && \
+RUN apk --no-cache add --update bash && \
     find /etc/nginx/* ! -name 'mime.types' -delete && \
     rm -r /usr/share/nginx/html/* && \
     mkdir -p /var/www/webroot && \
