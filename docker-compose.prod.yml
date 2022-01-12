@@ -4,17 +4,24 @@ services:
   certbot:
     image: certbot/certbot
     restart: unless-stopped
-    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+    build:
+      context: .
+      dockerfile: certbot/Dockerfile
+      args:
+        router_container_name: ${ROUTER_CONTAINER_NAME}
     volumes:
       - certbot_www:/var/www/certbot
       - certbot_conf:/etc/letsencrypt
+      - /var/run/docker.sock:/var/run/docker.sock
 
   nginx:
+    container_name: ${ROUTER_CONTAINER_NAME}
     depends_on:
       - certbot
     volumes:
       - certbot_www:/var/www/certbot
       - certbot_conf:/etc/letsencrypt
+      - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - 443:443
       - 80:80

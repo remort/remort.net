@@ -19,7 +19,7 @@ run: check-env
 
 build:
 	python3 build.py
-	@echo "Succesfully built"
+	@echo "Successfully built"
 
 env: check-envs
 	@if [ "$(environment)" = "development" -o "$(environment)" = "production" ]; then\
