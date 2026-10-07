@@ -44,7 +44,7 @@ def encode_favicon() -> str:
 
 def render_pages():
     menu_items: List[Tuple[str, str, int]] = get_menu_items()
-    page_tmpl: Template = Template(template_path.open().read())
+    page_tmpl: Template = Template(source=template_path.open().read())
     favicon: str = encode_favicon()
     file: PosixPath
     for file in Path('pages').glob('*.md'):

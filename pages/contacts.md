@@ -1,10 +1,11 @@
 ---
 title: Контакты
-order: 3
+tagline: Press <Any> key
+order: 4
 ---
 
-- **Telegram**: @redahead
-- **Email**: master (at) remort.net
+- **Telegram**: (dog symbol)redahead
+- **Email**: master (dog symbol) remort.net
 - **Gsm**: +79506390163. <br> Могу быть в роуминге, поэтому шлите СМС или пишите в Телеграм.
-- **Skype**: remort.net
+- **WhatsApp**: +79122753718
 - **GitHub**: https://github.com/remort
